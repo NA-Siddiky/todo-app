@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {Text} from 'react-native';
+import SignUpLoginPage from './components/login/login';
 // import Navigator from './navigation/navigator';
 
 function App(): React.JSX.Element {
@@ -15,7 +15,8 @@ function App(): React.JSX.Element {
     //   <Navigator />
     //   {/* <Navigation /> */}
     // </NavigationContainer>
-    <Text>Hello</Text>
+    // <Text>Hello</Text>
+    <SignUpLoginPage />
   );
 }
 
