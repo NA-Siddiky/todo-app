@@ -1,13 +1,42 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import {
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
+import { auth } from '../../config/firebase';
 
 const SignUpLoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async () => {
+    if (email && password) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Yours Daily Plan</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => console.log('Sign Up Pressed')}>
+
+      <TextInput
+        value={email}
+        onChangeText={value => setEmail(value)}
+        placeholder="Enter Email"
+      />
+      <TextInput
+        value={password}
+        onChangeText={value => setPassword(value)}
+        placeholder="Enter Password"
+      />
+      <TouchableOpacity style={styles.button} onPress={() => handleSubmit()}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
       <TouchableOpacity
