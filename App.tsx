@@ -5,16 +5,17 @@
  * @format
  */
 
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import Navigator from './navigation/navigator';
+import {Text} from 'react-native';
+// import Navigator from './navigation/navigator';
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <Navigator />
-      {/* <Navigation /> */}
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <Navigator />
+    //   {/* <Navigation /> */}
+    // </NavigationContainer>
+    <Text>Hello</Text>
   );
 }
 
