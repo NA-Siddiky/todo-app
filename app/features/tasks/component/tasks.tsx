@@ -142,7 +142,7 @@ function Tasks(): React.JSX.Element {
         title=""
         content={
           <>
-            <Text>Passengers</Text>
+            <Text>Task details</Text>
             <View style={styles.formContainer}>
               <TextInput
                 style={styles.input}
