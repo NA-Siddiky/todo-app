@@ -21,7 +21,7 @@ function SignIn(): React.JSX.Element {
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
         // console.log(res.user.email);
-        Alert.alert('user created' + email);
+        Alert.alert('user added for ' + email);
         setIsAlreadySignUp(true);
         // Set the email in the context
         contextSetEmail(res.user.email);
