@@ -20,7 +20,7 @@ function SignIn(): React.JSX.Element {
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
-        console.log(res.user.email);
+        // console.log(res.user.email);
         Alert.alert('user created' + email);
         setIsAlreadySignUp(true);
         // Set the email in the context
@@ -40,7 +40,7 @@ function SignIn(): React.JSX.Element {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(res => {
-        console.log(res.user.email);
+        // console.log(res.user.email);
         Alert.alert('Logged in successfully');
         // Set the email in the context
         contextSetEmail(res.user.email);

@@ -19,7 +19,7 @@ function Tasks(): React.JSX.Element {
   const [newTaskDescription, setNewTaskDescription] = useState('');
 
   const {email} = useContext(UserContext);
-  console.log('email in Task>>>', email);
+  // console.log('email in Task>>>', email);
 
   useEffect(() => {
     fetchTasks();
@@ -27,9 +27,7 @@ function Tasks(): React.JSX.Element {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get(
-        'http://43.201.65.252/tasks/abc@gmail.com',
-      );
+      const response = await axios.get(`http://43.201.65.252/tasks/${email}`);
       // console.log('response', response);
       setTodos(response?.data?.tasks ?? []);
     } catch (error) {
@@ -63,7 +61,7 @@ function Tasks(): React.JSX.Element {
     const newTask = {
       title: newTaskTitle,
       description: newTaskDescription,
-      email: 'abc@gmail.com',
+      email: email,
     };
     const response: any = await axios.post(
       'http://43.201.65.252/tasks',

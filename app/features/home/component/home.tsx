@@ -13,14 +13,14 @@ interface Todo {
 function Home(): React.JSX.Element {
   const [todos, setTodos] = useState<Todo[]>([]);
   const {email} = useContext(UserContext);
-  console.log('email in home>>>', email);
+  // console.log('email in home>>>', email);
 
   useFocusEffect(
     React.useCallback(() => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            'http://43.201.65.252/tasks/abc@gmail.com',
+            `http://43.201.65.252/tasks/${email}`,
           );
           setTodos(response?.data?.tasks ?? []);
         } catch (error) {

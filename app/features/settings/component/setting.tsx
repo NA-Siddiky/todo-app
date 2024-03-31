@@ -1,8 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import UserContext from '../../../contexts/UserContext';
 
 function Setting(): React.JSX.Element {
+  const {email} = useContext(UserContext);
+  // console.log('email in Task>>>', email);
   const navigation: any = useNavigation();
   const handleLogout = () => {
     // Navigate to the login screen
@@ -17,8 +20,8 @@ function Setting(): React.JSX.Element {
           source={require('../../../../assets/images/homeBus.png')}
         />
         <View style={styles.textContainer}>
-          <Text style={styles.greeting}>Hello, Siddiky!</Text>
-          <Text style={styles.greetingOne}>What Are You Going?</Text>
+          <Text style={styles.greeting}>Hello, {email}!</Text>
+          <Text style={styles.greetingOne}>Have you done for today?</Text>
         </View>
       </View>
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
