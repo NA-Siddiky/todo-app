@@ -13,6 +13,9 @@ import CustomModal from '../../../common/components/customModal/customModal';
 
 function Tasks(): React.JSX.Element {
   const [todos, setTodos] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [newTaskDescription, setNewTaskDescription] = useState('');
 
   useEffect(() => {
     fetchTasks();
@@ -29,9 +32,6 @@ function Tasks(): React.JSX.Element {
       console.error('Error fetching tasks:', error);
     }
   };
-  const [modalVisible, setModalVisible] = useState(false);
-  const [newTaskTitle, setNewTaskTitle] = useState('');
-  const [newTaskDescription, setNewTaskDescription] = useState('');
 
   const toggleTodo = async (id: any) => {
     const response: any = await axios.patch(`http://43.201.65.252/tasks/${id}`);
@@ -92,7 +92,7 @@ function Tasks(): React.JSX.Element {
           fullWidth={true}
         />
       </TouchableOpacity>
-      <Text>
+      <Text style={{fontWeight: 'bold', fontSize: 20}}>
         {' '}
         Total Completed : {
           todos.filter(todo => todo.status === true).length
@@ -101,7 +101,7 @@ function Tasks(): React.JSX.Element {
       <View style={styles.container}>
         <FlatList
           data={todos}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item._id}
           renderItem={({item}: any) => (
             <View style={styles.todoItem}>
               <Text style={styles.todoText}>{item?.title}</Text>
