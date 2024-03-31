@@ -11,8 +11,7 @@ function Home(): React.JSX.Element {
         const response = await axios.get(
           'http://43.201.65.252/tasks/abc@gmail.com',
         );
-        console.log('response', response);
-        setTodos(response.data);
+        setTodos(response?.data?.tasks ?? []);
       } catch (error) {
         console.error('Error fetching tasks:', error);
       }
