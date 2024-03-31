@@ -1,18 +1,42 @@
+import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 
 function SignIn(): React.JSX.Element {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isAlreadySignUp, setIsAlreadySignUp] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
   const passwordInputRef = useRef(null);
 
-  const handleSignIn = () => {
-    // navigation.navigate('home');
-    navigation.navigate('Main', {screen: 'Home'});
+  const handleSignUp = () => {
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        Alert.alert('user created' + email);
+        setIsAlreadySignUp(true);
+        navigation.navigate('Main', {screen: 'Home'});
+      })
+      .catch(error => {
+        console.log(error.code);
+        Alert.alert(error.code);
+      });
+  };
+
+  const handleLoginIn = () => {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log(res.user.email);
+        Alert.alert('Logged in successfully');
+        navigation.navigate('Main', {screen: 'Home'});
+      })
+      .catch(error => {
+        console.log(error.code);
+        Alert.alert(error.code);
+      });
   };
 
   return (
@@ -23,29 +47,31 @@ function SignIn(): React.JSX.Element {
             style={styles.input}
             placeholder="Email"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={text => setEmail(text)}
             returnKeyType="next"
-            onSubmitEditing={() => passwordInputRef.current.focus()}
           />
           <TextInput
             style={styles.input}
             placeholder="Password"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={text => setPassword(text)}
             secureTextEntry
             returnKeyType="done"
-            onSubmitEditing={handleSignIn}
             ref={passwordInputRef}
           />
-          <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={isAlreadySignUp ? handleSignUp : handleLoginIn}>
             <Text style={styles.buttonText}>
-              {isSignUp ? 'Sign Up' : 'Login'}
+              {isAlreadySignUp ? 'Sign Up' : 'Login'}
             </Text>
           </TouchableOpacity>
           <Text
-            onPress={() => setIsSignUp(!isSignUp)}
+            onPress={() => setIsAlreadySignUp(!isAlreadySignUp)}
             style={styles.toggleText}>
-            {isSignUp ? 'Already have an account? Log in' : 'New user? Sign up'}
+            {isAlreadySignUp
+              ? 'Already have an account? Log in'
+              : 'New user? Sign up'}
           </Text>
         </View>
       </View>
