@@ -1,40 +1,43 @@
 // ReusableButton.tsx
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 interface ReusableButtonProps {
- text: string;
- fullWidth?: boolean;
- onPress: () => void;
- title?:any;
+  text: string;
+  fullWidth?: boolean;
+  onPress: () => void;
+  title?: any;
 }
 
-const CustomButton: React.FC<ReusableButtonProps> = ({ text, fullWidth = false, onPress }) => {
- return (
+const CustomButton: React.FC<ReusableButtonProps> = ({
+  text,
+  fullWidth = false,
+  onPress,
+}) => {
+  return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.button, fullWidth && styles.fullWidthButton]}
-    >
+      style={[styles.button, fullWidth && styles.fullWidthButton]}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
- );
+  );
 };
 
 const styles = StyleSheet.create({
- button: {
+  button: {
     backgroundColor: '#D91B5E',
     padding: 10,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
- },
- fullWidthButton: {
+  },
+  fullWidthButton: {
     width: '100%',
- },
- buttonText: {
+  },
+  buttonText: {
     color: 'white',
     fontSize: 16,
- },
+  },
 });
 
 export default CustomButton;
