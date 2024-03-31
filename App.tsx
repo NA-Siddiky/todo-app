@@ -6,17 +6,25 @@
  */
 
 import React from 'react';
-import SignUpLoginPage from './components/login/login';
-import useAuth from './hooks/useAuth';
-// import Navigator from './navigation/navigator';
+import { useColorScheme } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import StackNavigator from './app/routes/stackNavigator';
 
 function App(): React.JSX.Element {
-  const {user} = useAuth();
-  if (user) {
-    console.log('User Logged in');
-  } else {
-    return <SignUpLoginPage />;
-  }
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+      {/* <Navigation /> */}
+    </NavigationContainer>
+  );
 }
 
 export default App;
