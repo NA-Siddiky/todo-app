@@ -23,7 +23,7 @@ function Tasks(): React.JSX.Element {
       const response = await axios.get(
         'http://43.201.65.252/tasks/abc@gmail.com',
       );
-      console.log('response', response);
+      // console.log('response', response);
       setTodos(response?.data?.tasks ?? []);
     } catch (error) {
       console.error('Error fetching tasks:', error);
@@ -48,7 +48,7 @@ function Tasks(): React.JSX.Element {
     const response: any = await axios.delete(
       `http://43.201.65.252/tasks/${id}`,
     );
-    console.log('response', response);
+    //  console.log('response', response);
     if (response.status === 200) {
       setTodos(todos.filter(todo => todo._id !== id));
     }
