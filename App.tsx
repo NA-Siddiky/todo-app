@@ -15,7 +15,7 @@ function App(): React.JSX.Element {
     //   <Navigator />
     //   {/* <Navigation /> */}
     // </NavigationContainer>
-    <Text>Hello</Text>
+    <Text>Hello Bd</Text>
   );
 }
 
