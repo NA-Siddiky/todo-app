@@ -6,16 +6,24 @@
  */
 
 import React from 'react';
-import {Text} from 'react-native';
-// import Navigator from './navigation/navigator';
+import {useColorScheme} from 'react-native';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import StackNavigator from './app/routes/stackNavigator';
 
 function App(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
   return (
-    // <NavigationContainer>
-    //   <Navigator />
-    //   {/* <Navigation /> */}
-    // </NavigationContainer>
-    <Text>Hello</Text>
+    <NavigationContainer>
+      <StackNavigator />
+      {/* <Navigation /> */}
+    </NavigationContainer>
   );
 }
 
