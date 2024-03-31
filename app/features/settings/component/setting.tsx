@@ -1,13 +1,13 @@
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import { Image, StyleSheet, Text, View , TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 function Setting(): React.JSX.Element {
   const navigation: any = useNavigation();
   const handleLogout = () => {
     // Navigate to the login screen
     navigation.navigate('Login');
- };
+  };
 
   return (
     <>
@@ -17,7 +17,7 @@ function Setting(): React.JSX.Element {
           source={require('../../../../assets/images/homeBus.png')}
         />
         <View style={styles.textContainer}>
-          <Text style={styles.greeting}>Hello, Ashik!</Text>
+          <Text style={styles.greeting}>Hello, Siddiky!</Text>
           <Text style={styles.greetingOne}>What Are You Going?</Text>
         </View>
       </View>
@@ -78,11 +78,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f00', // Red background for the logout button
     alignSelf: 'center', // Center the button
     marginTop: 20, // Add some margin at the top
- },
- logoutText: {
+  },
+  logoutText: {
     color: 'white',
     fontSize: 16,
- },
+  },
 });
 
 export default Setting;
