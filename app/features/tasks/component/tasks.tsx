@@ -15,21 +15,20 @@ function Tasks(): React.JSX.Element {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get(
-          'http://43.201.65.252/tasks/abc@gmail.com',
-        );
-        console.log('response', response);
-        setTodos(response?.data?.tasks ?? []);
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
-      }
-    };
-
     fetchTasks();
   }, []);
 
+  const fetchTasks = async () => {
+    try {
+      const response = await axios.get(
+        'http://43.201.65.252/tasks/abc@gmail.com',
+      );
+      console.log('response', response);
+      setTodos(response?.data?.tasks ?? []);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
   const [modalVisible, setModalVisible] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDescription, setNewTaskDescription] = useState('');
@@ -66,12 +65,13 @@ function Tasks(): React.JSX.Element {
       'http://43.201.65.252/tasks',
       newTask,
     );
-    if (response.status === 200) {
-      setTodos([...todos, newTask]); // Add the new task to the todos array
-      setNewTaskTitle(''); // Clear the title input
-      setNewTaskDescription(''); // Clear the description input
-      setModalVisible(false);
-    }
+    //  if (response.status === 200) {
+    fetchTasks();
+    // setTodos([...todos, newTask]); // Add the new task to the todos array
+    setNewTaskTitle(''); // Clear the title input
+    setNewTaskDescription(''); // Clear the description input
+    setModalVisible(false);
+    //  }
   };
 
   const handleClose = () => {
@@ -92,6 +92,12 @@ function Tasks(): React.JSX.Element {
           fullWidth={true}
         />
       </TouchableOpacity>
+      <Text>
+        {' '}
+        Total Completed : {
+          todos.filter(todo => todo.status === true).length
+        }{' '}
+      </Text>
       <View style={styles.container}>
         <FlatList
           data={todos}
@@ -103,7 +109,7 @@ function Tasks(): React.JSX.Element {
               <View style={styles.buttonContainer}>
                 <TouchableOpacity
                   onPress={() => {
-                    if (!item.status) {
+                    if (!item?.status) {
                       toggleTodo(item._id);
                     }
                   }}
