@@ -5,13 +5,13 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 function Home(): React.JSX.Element {
   const [todos, setTodos] = useState([]);
 
-  console.log('todo>>', todos);
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get(
-          'http://192.168.1.100:5010/tasks/abc@gmail.com',
+          'http://43.201.65.252/tasks/abc@gmail.com',
         );
+        console.log('response', response);
         setTodos(response.data);
       } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -27,9 +27,9 @@ function Home(): React.JSX.Element {
         <FlatList
           data={todos}
           keyExtractor={item => item.id}
-          renderItem={({item}) => (
+          renderItem={({item}: any) => (
             <View style={styles.todoItem}>
-              <Text style={styles.todoText}>{item.text}</Text>
+              <Text style={styles.todoText}>{item.title}</Text>
             </View>
           )}
         />

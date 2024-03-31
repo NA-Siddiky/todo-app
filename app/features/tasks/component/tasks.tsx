@@ -3,13 +3,26 @@ import React, { useState } from 'react';
 import { TextInput, StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import CustomButton from '../../../common/components/customButton/customButton';
 import CustomModal from '../../../common/components/customModal/customModal';
+import axios from 'axios';
 
 function Tasks(): React.JSX.Element {
-   const [todos, setTodos] = useState([
-      { id: '1', text: 'Buy milk',description:"description",  isActive: true },
-      { id: '2', text: 'Walk the dog',description:"description", isActive: false },
-      { id: '3', text: 'Finish project',description:"description", isActive: true },
-   ]);
+   const [todos, setTodos] = useState([]);
+
+   useEffect(() => {
+      const fetchTasks = async () => {
+        try {
+          const response = await axios.get(
+            'http://localhost:5010/tasks/abc@gmail.com',
+          );
+          setTodos(response.data);
+        } catch (error) {
+          console.error('Error fetching tasks:', error);
+        }
+      };
+  
+      fetchTasks();
+    }, []);
+
    const [modalVisible, setModalVisible] = useState(false);
    const [newTaskTitle, setNewTaskTitle] = useState('');
    const [newTaskDescription, setNewTaskDescription] = useState('');
