@@ -5,25 +5,21 @@
  * @format
  */
 
-import React from 'react';
-import { useColorScheme } from 'react-native';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import React, {useState} from 'react';
+import UserContext from './app/contexts/UserContext';
 import StackNavigator from './app/routes/stackNavigator';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const [email, setEmail] = useState<string>('');
 
   return (
-    <NavigationContainer>
-      <StackNavigator />
-      {/* <Navigation /> */}
-    </NavigationContainer>
+    <UserContext.Provider value={{email, setEmail}}>
+      <NavigationContainer>
+        <StackNavigator />
+        {/* <Navigation /> */}
+      </NavigationContainer>
+    </UserContext.Provider>
   );
 }
 

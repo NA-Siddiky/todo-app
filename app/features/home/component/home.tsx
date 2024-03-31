@@ -1,26 +1,20 @@
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
+import UserContext from '../../../contexts/UserContext';
+
+interface Todo {
+  _id: string;
+  title: string;
+  // Add other properties of a todo as needed
+}
 
 function Home(): React.JSX.Element {
-  const navigation: any = useNavigation();
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const {email} = useContext(UserContext);
+  console.log('email in home>>>', email);
 
-  //   useFocusEffect(() => {
-  //     const fetchTasks = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           'http://43.201.65.252/tasks/abc@gmail.com',
-  //         );
-  //         setTodos(response?.data?.tasks ?? []);
-  //       } catch (error) {
-  //         console.error('Error fetching tasks:', error);
-  //       }
-  //     };
-
-  //     fetchTasks();
-  //   }, []);
   useFocusEffect(
     React.useCallback(() => {
       const fetchData = async () => {
@@ -35,7 +29,7 @@ function Home(): React.JSX.Element {
       };
 
       fetchData();
-    }, []),
+    }, [email]), // Depend on email to refetch when email changes
   );
 
   return (
@@ -44,7 +38,7 @@ function Home(): React.JSX.Element {
         <FlatList
           data={todos}
           keyExtractor={item => item._id}
-          renderItem={({item}: any) => (
+          renderItem={({item}: {item: Todo}) => (
             <View style={styles.todoItem}>
               <Text style={styles.todoText}>{item.title}</Text>
             </View>

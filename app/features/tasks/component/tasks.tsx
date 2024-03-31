@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -10,12 +10,16 @@ import {
 } from 'react-native';
 import CustomButton from '../../../common/components/customButton/customButton';
 import CustomModal from '../../../common/components/customModal/customModal';
+import UserContext from '../../../contexts/UserContext';
 
 function Tasks(): React.JSX.Element {
   const [todos, setTodos] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDescription, setNewTaskDescription] = useState('');
+
+  const {email} = useContext(UserContext);
+  console.log('email in Task>>>', email);
 
   useEffect(() => {
     fetchTasks();

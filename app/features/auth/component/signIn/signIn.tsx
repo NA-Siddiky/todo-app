@@ -1,8 +1,10 @@
+// SignIn.tsx
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
+import UserContext from '../../../../contexts/UserContext'; // Adjust the import path as necessary
 
 function SignIn(): React.JSX.Element {
   const [isAlreadySignUp, setIsAlreadySignUp] = useState(false);
@@ -11,13 +13,22 @@ function SignIn(): React.JSX.Element {
   const navigation = useNavigation();
   const passwordInputRef = useRef(null);
 
+  // Access email and setEmail from the UserContext
+  const {setEmail: contextSetEmail} = useContext(UserContext);
+
   const handleSignUp = () => {
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(res => {
+        console.log(res.user.email);
         Alert.alert('user created' + email);
         setIsAlreadySignUp(true);
-        navigation.navigate('Main', {screen: 'Home'});
+        // Set the email in the context
+        contextSetEmail(res.user.email);
+        navigation.navigate('Main', {
+          screen: 'Home',
+          params: {email: res.user.email},
+        });
       })
       .catch(error => {
         console.log(error.code);
@@ -31,7 +42,12 @@ function SignIn(): React.JSX.Element {
       .then(res => {
         console.log(res.user.email);
         Alert.alert('Logged in successfully');
-        navigation.navigate('Main', {screen: 'Home'});
+        // Set the email in the context
+        contextSetEmail(res.user.email);
+        navigation.navigate('Main', {
+          screen: 'Home',
+          params: {email: res.user.email},
+        });
       })
       .catch(error => {
         console.log(error.code);
