@@ -23,12 +23,14 @@ Before you begin, ensure you have the following:
 
 ### User Credentials
 
-You can use the following credentials to log in:
+**Important:** Before you start using the To-Do App, please ensure you have the following credentials:
 
-- Username: `test@gmail.com`
-- Password: `000000`
+- **Username:** `test@gmail.com`
+- **Password:** `000000`
 
-Alternatively, you can create a new user with your email address.
+**Alternatively,** you can create a new user for Sign up with your email address.
+
+**Note:** These credentials are for testing purposes only. For a secure and personalized experience, it's recommended to create a new user with your own email address and check both sign up and login works perfectly.
 
 ### Repository Information
 
@@ -59,14 +61,14 @@ The backend is deployed on AWS. You can also use it locally:
 3. **Install Dependencies**
 
    Navigate to the project directory and install the necessary dependencies:
-   
+
    npm install
 
 4. **Run the Application**
 
    Start the application by running:
 
-    npm run start
+   npm run start
 
 ### Application Screenshots
 
