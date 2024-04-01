@@ -41,7 +41,7 @@ function SignIn(): React.JSX.Element {
       .signInWithEmailAndPassword(email, password)
       .then(res => {
         // console.log(res.user.email);
-        Alert.alert('Logged in successfully');
+        // Alert.alert('Logged in successfully');
         // Set the email in the context
         contextSetEmail(res.user.email);
         navigation.navigate('Main', {
