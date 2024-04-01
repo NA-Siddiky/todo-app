@@ -17,7 +17,7 @@ function Setting(): React.JSX.Element {
       <View style={styles.header}>
         <Image
           style={styles.profileImage}
-          source={require('../../../../assets/images/homeBus.png')}
+          source={require('../../../../assets/images/good_bye.png')}
         />
         <View style={styles.textContainer}>
           <Text style={styles.greeting}>Hello, {email}!</Text>

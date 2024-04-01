@@ -1,44 +1,98 @@
-# Getting Started
+# To-Do App
 
-to-do app user credentials
-user name: test@gmail.com
-password: 000000
+Welcome to the To-Do App! This application is designed to help you manage your tasks efficiently.
 
-and you may create any user to check with your email address
+## Table of Contents
 
-repo name : https://github.com/NA-Siddiky/todo-app
-Branch name: main
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [User Credentials](#user-credentials)
+- [Repository Information](#repository-information)
+- [Backend Information](#backend-information)
+- [Installation](#installation)
+- [Application Screenshots](#application-screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Step 1:
+## Getting Started
 
-Clone the repository: git clone https://github.com/NA-Siddiky/todo-app
-&
-pull repo command: git pull
+To get started with the To-Do App, follow these steps:
 
-## Step 2:
+### Prerequisites
 
-to build command> npm install
+Before you begin, ensure you have the following:
 
-## Step 3:
+- A GitHub account
+- Node.js (latest) and npm installed on your machine
+- Android Studio (latest) installed on your machine
 
-to run command> npm run start
+### User Credentials
 
-## 1. Login Screen
+You can use the following credentials to log in:
 
-![alt text](1.login.png)
+- Username: `test@gmail.com`
+- Password: `000000`
 
-## 2. Drawer Navigator Screen
+Alternatively, you can create a new user with your email address.
 
-![alt text](<2.Drawer Navigator.png>)
+### Repository Information
 
-## 3. Home Screen
+- Repository URL: [https://github.com/NA-Siddiky/todo-app](https://github.com/NA-Siddiky/todo-app)
+- Branch: `main`
 
-![alt text](3.Home.png)
+### Backend Information
 
-## 3. Task Screen
+The backend is deployed on AWS. You can also use it locally:
 
-![alt text](4.Task.png)
+- AWS Link: [http://43.201.65.252/tasks/](http://43.201.65.252/tasks/)
+- Local Link: [http://localhost:5010/](http://localhost:5010/)
 
-## 3. Logout Screen
+### Installation
 
-![alt text](5.Logout.png)
+1. **Clone the Repository**
+
+   Clone the repository to your local machine using the following command:
+   git clone https://github.com/NA-Siddiky/todo-app
+
+2. **Pull the Latest Changes**
+
+   Ensure you have the latest version of the repository by pulling the changes:
+
+   git pull
+
+3. **Install Dependencies**
+
+   Navigate to the project directory and install the necessary dependencies:
+   npm install
+
+4. **Run the Application**
+
+   Start the application by running:
+
+npm run start
+
+### Application Screenshots
+
+Here are some screenshots of the application:
+
+#### 1. Login Screen
+
+![Login Screen](assets/images/1.login.png)
+
+#### 2. Drawer Navigator Screen
+
+![Drawer Navigator Screen](assets/images/2.Drawer%20Navigator.png)
+
+#### 3. Home Screen
+
+![Home Screen](assets/images/3.Home.png)
+
+#### 4. Task Screen
+
+![Task Screen](assets/images/4.Task.png)
+
+#### 5. Logout Screen
+
+![Logout Screen](assets/images/5.Logout.png)
+
+## Thank you
