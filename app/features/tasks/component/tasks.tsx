@@ -123,13 +123,13 @@ function Tasks(): React.JSX.Element {
                       styles.activeButton,
                       item.status ? styles.active : styles.inactive,
                     ]}>
-                    {item.status ? 'Completed' : 'Incomplete'}
+                    {item.status ? 'Completed' : 'Progressing'}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => deleteTodo(item._id)}>
-                  <Text style={[styles.activeButton, styles.inactive]}>
+                  <Text style={[styles.activeButton, styles.delete]}>
                     Delete
                   </Text>
                 </TouchableOpacity>
@@ -203,8 +203,8 @@ const styles = StyleSheet.create({
     width: 7000,
   },
   todoDescription: {
-    fontSize: 13,
     flex: 1,
+    fontSize: 13,
     width: 7000,
     flexWrap: 'wrap',
     maxWidth: '100%',
@@ -234,6 +234,10 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   inactive: {
+    backgroundColor: 'orange',
+    color: 'white',
+  },
+  delete: {
     backgroundColor: 'red',
     color: 'white',
   },
