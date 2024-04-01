@@ -41,7 +41,7 @@ Before you begin, ensure you have the following:
 
 The backend is deployed on AWS. You can also use it locally:
 
-- AWS Link: [http://43.201.65.252/tasks/](http://43.201.65.252/)
+- AWS Link: [http://43.201.65.252/](http://43.201.65.252/)
 - Local Link: [http://localhost:5010/](http://localhost:5010/)
 
 ### Installation
