@@ -4,7 +4,6 @@ Welcome to the To-Do App! This application is designed to help you manage your t
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [User Credentials](#user-credentials)
 - [Repository Information](#repository-information)
@@ -13,10 +12,6 @@ Welcome to the To-Do App! This application is designed to help you manage your t
 - [Application Screenshots](#application-screenshots)
 - [Contributing](#contributing)
 - [License](#license)
-
-## Getting Started
-
-To get started with the To-Do App, follow these steps:
 
 ### Prerequisites
 
@@ -38,13 +33,13 @@ Alternatively, you can create a new user with your email address.
 ### Repository Information
 
 - Repository URL: [https://github.com/NA-Siddiky/todo-app](https://github.com/NA-Siddiky/todo-app)
-- Branch: `main`
+- Branch name: `main`
 
 ### Backend Information
 
 The backend is deployed on AWS. You can also use it locally:
 
-- AWS Link: [http://43.201.65.252/tasks/](http://43.201.65.252/tasks/)
+- AWS Link: [http://43.201.65.252/tasks/](http://43.201.65.252/)
 - Local Link: [http://localhost:5010/](http://localhost:5010/)
 
 ### Installation
@@ -52,6 +47,7 @@ The backend is deployed on AWS. You can also use it locally:
 1. **Clone the Repository**
 
    Clone the repository to your local machine using the following command:
+
    git clone https://github.com/NA-Siddiky/todo-app
 
 2. **Pull the Latest Changes**
@@ -63,13 +59,14 @@ The backend is deployed on AWS. You can also use it locally:
 3. **Install Dependencies**
 
    Navigate to the project directory and install the necessary dependencies:
+   
    npm install
 
 4. **Run the Application**
 
    Start the application by running:
 
-npm run start
+    npm run start
 
 ### Application Screenshots
 
