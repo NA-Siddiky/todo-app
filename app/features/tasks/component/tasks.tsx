@@ -106,8 +106,10 @@ function Tasks(): React.JSX.Element {
           keyExtractor={item => item._id}
           renderItem={({item}: any) => (
             <View style={styles.todoItem}>
-              <Text style={styles.todoText}>{item?.title}</Text>
-              <Text style={styles.todoDescription}>{item?.description}</Text>
+              <View style={styles.textContainer}>
+                <Text style={styles.todoText}>{item?.title}</Text>
+                <Text style={styles.todoDescription}>{item?.description}</Text>
+              </View>
               <View style={styles.buttonContainer}>
                 <TouchableOpacity
                   onPress={() => {
@@ -124,11 +126,12 @@ function Tasks(): React.JSX.Element {
                     {item.status ? 'Completed' : 'Incomplete'}
                   </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                  <CustomButton
-                    onPress={() => deleteTodo(item._id)}
-                    text="Delete"
-                  />
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => deleteTodo(item._id)}>
+                  <Text style={[styles.activeButton, styles.inactive]}>
+                    Delete
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -173,7 +176,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   createTaskButton: {
-    // backgroundColor: '#007BFF', // Blue background
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
@@ -188,19 +190,33 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
+  textContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
   todoText: {
     fontSize: 14,
-    flex: 1, // Allow the description to take up available space
+    fontWeight: 'bold',
+    flex: 1,
     width: 7000,
   },
   todoDescription: {
-    fontSize: 14,
-    flex: 1, // Allow the description to take up available space
+    fontSize: 13,
+    flex: 1,
     width: 7000,
-    marginLeft: 10, // Add some space between the title and description
+    flexWrap: 'wrap',
+    maxWidth: '100%',
   },
   buttonContainer: {
+    flex: 1,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 10,
+    marginTop: 10,
   },
   button: {
     paddingHorizontal: 10,
